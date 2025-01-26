@@ -23,7 +23,12 @@ ThemeToggle(themeToggle);
 const passwordListManager = PasswordList(savedPasswordsList);
 
 // Generate and evaluate password
-generateBtn.addEventListener("click", () => {
+const passwordForm = document.getElementById("password-form");
+
+passwordForm.addEventListener("submit", (event) => {
+  event.preventDefault(); // Prevent form submission and page refresh
+
+  // Trigger password generation when form is submitted
   const length = parseInt(lengthInput.value);
 
   // First check for validation errors
