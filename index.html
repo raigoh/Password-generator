@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Generate secure, customizable passwords with options for length, character types, and save functionality">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="color-scheme" content="light dark">
+  <title>Secure Password Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="container">
+    <header>
+      <div class="header-container">
+        <div class="title-section">
+          <h1>Password Generator</h1>
+          <p>Create a secure password with customizable options</p>
+        </div>
+        <button type="button" id="theme-toggle" class="theme-button" aria-label="Toggle dark mode">
+          <span class="icon" aria-hidden="true">🌓</span>
+          <span class="button-text">Dark Mode</span>
+        </button>
+      </div>
+    </header>
+
+    <form id="password-form" aria-label="Password generation options">
+      <div class="form-group">
+        <label for="length" class="form-label">Password length:</label>
+        <div class="input-group">
+          <input type="number" id="length" min="12" max="64" value="16" aria-describedby="length-hint" required>
+          <span id="length-hint" class="hint-text">Recommended: 16-32 characters</span>
+        </div>
+      </div>
+
+      <fieldset class="password-options">
+        <legend>Character types to include:</legend>
+
+        <div class="checkbox-group">
+          <div class="checkbox-wrapper">
+            <input type="checkbox" id="include-lowercase" checked>
+            <label for="include-lowercase">Lowercase letters (a-z)</label>
+          </div>
+
+          <div class="checkbox-wrapper">
+            <input type="checkbox" id="include-uppercase" checked>
+            <label for="include-uppercase">Uppercase letters (A-Z)</label>
+          </div>
+
+          <div class="checkbox-wrapper">
+            <input type="checkbox" id="include-numbers" checked>
+            <label for="include-numbers">Numbers (0-9)</label>
+          </div>
+
+          <div class="checkbox-wrapper">
+            <input type="checkbox" id="include-symbols" checked>
+            <label for="include-symbols">Special characters (!@#$%^&*)</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <section class="password-display" aria-live="polite">
+        <h2 class="visually-hidden">Generated Password</h2>
+        <div id="password-box" class="password-output" role="textbox" aria-label="Generated password">
+          Your password will appear here
+        </div>
+
+        <div class="button-group">
+          <button type="button" id="generate-btn" class="primary-button">
+            <span class="icon">🔄</span> Generate Password
+          </button>
+          <button type="button" id="copy-btn" class="secondary-button">
+            <span class="icon">📋</span> Copy Password
+          </button>
+        </div>
+      </section>
+
+      <section class="strength-indicator">
+        <h2 class="visually-hidden">Password Strength</h2>
+        <div id="strength-box">
+          <span id="strength-text">Password strength:</span>
+          <div id="strength-bar" role="progressbar" aria-label="Password strength indicator"></div>
+        </div>
+      </section>
+
+      <section class="saved-passwords">
+        <h2>Saved Passwords</h2>
+        <button type="button" id="save-btn" class="secondary-button">
+          <span class="icon">💾</span> Save Password
+        </button>
+        <ul id="saved-passwords" class="password-list" aria-label="List of saved passwords"></ul>
+      </section>
+    </form>
+
+  </main>
+
+  <script type="module" src="main.js"></script>
+</body>
+
+</html>
