@@ -25,6 +25,17 @@ const passwordListManager = PasswordList(savedPasswordsList);
 // Generate and evaluate password
 generateBtn.addEventListener("click", () => {
   const length = parseInt(lengthInput.value);
+
+  // First check for validation errors
+  const validationError = PasswordGenerator.validate(length);
+  if (validationError) {
+    passwordBox.textContent = validationError;
+    passwordBox.classList.add("error");
+    strengthBar.removeAttribute("data-strength");
+    return;
+  }
+
+  // Generate the password
   const newPassword = PasswordGenerator.generate(
     length,
     includeLowercase.checked,
@@ -32,7 +43,18 @@ generateBtn.addEventListener("click", () => {
     includeNumbers.checked,
     includeSymbols.checked
   );
+
+  // Check if the result is an error message (no character types selected)
+  if (newPassword === "Please select at least one character type.") {
+    passwordBox.textContent = newPassword;
+    passwordBox.classList.add("error");
+    strengthBar.removeAttribute("data-strength");
+    return;
+  }
+
+  // If we get here, we have a valid password
   passwordBox.textContent = newPassword;
+  passwordBox.classList.remove("error");
   PasswordStrength.evaluate(newPassword, strengthBar);
 });
 

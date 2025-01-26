@@ -159,6 +159,12 @@ p {
   margin-bottom: var(--space-md);
 }
 
+.password-output.error {
+  color: #dc2626;
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+
 /* Button Styles */
 .button-group {
   display: grid;

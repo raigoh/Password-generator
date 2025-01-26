@@ -1,7 +1,23 @@
 // passwordGenerator.js
 
 export const PasswordGenerator = {
+  validate(length) {
+    if (length < 8) {
+      return "Password length must be at least 8 chars";
+    }
+    if (length > 122) {
+      return "Password length cannot exceed 122 characters";
+    }
+    return null; // No error
+  },
+
   generate(length = 12, useLower, useUpper, useNumbers, useSymbols) {
+    // Validate input first
+    const error = this.validate(length);
+    if (error) {
+      return error;
+    }
+
     const lower = "abcdefghijklmnopqrstuvwxyz";
     const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const numbers = "0123456789";
@@ -27,8 +43,10 @@ export const PasswordGenerator = {
     if (useSymbols)
       password += symbols[Math.floor(Math.random() * symbols.length)];
 
+    const remainingLength = length - password.length;
+
     // Remaining password length
-    for (let i = 4; i < length; i++) {
+    for (let i = 0; i < remainingLength; i++) {
       password += chars[Math.floor(Math.random() * chars.length)];
     }
 
