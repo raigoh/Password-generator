@@ -1,7 +1,7 @@
-import { ThemeToggle } from "./themeToggle.js";
-import { PasswordGenerator } from "./passwordGenerator.js";
-import { PasswordStrength } from "./passwordStrength.js";
-import { PasswordList } from "./passwordList.js";
+import { ThemeToggle } from "./components/themeToggle.js";
+import { PasswordGenerator } from "./components/passwordGenerator.js";
+import { PasswordStrength } from "./components/passwordStrength.js";
+import { PasswordList } from "./components/passwordList.js";
 
 const passwordBox = document.getElementById("password-box");
 const generateBtn = document.getElementById("generate-btn");
