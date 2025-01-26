@@ -82,8 +82,8 @@ The project follows a modular architecture with separate components:
 ## Acknowledgments
 
 - Password strength criteria based on NIST guidelines
-- Icons provided by [Your Icon Set Provider]
-- Color scheme inspired by [Your Design System]
+- Icons provided by native emoji icons
+- Color scheme inspired by Accessibility standards
 
 ## Contact
 
